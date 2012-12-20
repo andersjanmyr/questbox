@@ -1,9 +1,7 @@
 Questbox::Application.routes.draw do
-  resources :quizzes
-
-
-  resources :questions
   devise_for :users
+  resources :quizzes
+  resources :questions
 
   root :to => 'questions#index'
 end

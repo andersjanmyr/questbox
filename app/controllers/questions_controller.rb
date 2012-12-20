@@ -24,13 +24,18 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   # GET /questions/new.json
   def new
-    @question = Question.new
+    @question = getClass.new
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @question }
     end
   end
+
+  def getClass
+    (params[:class] || params[:question][:class] || 'Question').constantize
+  end
+    
 
   # GET /questions/1/edit
   def edit
@@ -41,14 +46,14 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     question = params[:question].except(:extra)
-    question[:alternatives] = question[:alternatives].split(/, /)
-    question[:answers] = question[:answers].split(/, /)
-    @question = Question.new(question)
+    question[:alternatives] = question[:alternatives].split(/, /) if question[:alternatives]
+    question[:answers] = question[:answers].split(/, /) if question[:answers]
+    @question = getClass.new(question)
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render json: @question, status: :created, location: @question }
+        format.html { redirect_to question_path(@question), notice: 'Question was successfully created.' }
+        format.json { render json: @question, status: :created, location: question_path(@question) }
       else
         format.html { render action: "new" }
         format.json { render json: @question.errors, status: :unprocessable_entity }

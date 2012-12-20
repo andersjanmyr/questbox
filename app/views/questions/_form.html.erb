@@ -2,8 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :question_type, collection: Question.question_types %>
     <%= f.input :text %>
-    <%= f.input :alternatives %>
     <%= f.input :answers %>
     <%= f.input :extra %>
   </div>

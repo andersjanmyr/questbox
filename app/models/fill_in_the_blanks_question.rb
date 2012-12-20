@@ -1,3 +1,2 @@
-class FillInTheBlanksQuestion
-  include Mongoid::Document
+class FillInTheBlanksQuestion < Question
 end

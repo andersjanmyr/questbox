@@ -1,0 +1,17 @@
+<%= simple_form_for(@quiz) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :randomize_questions, as: :boolean %>
+    <%= f.input :randomize_answers, as: :boolean %>
+    <%= f.input :max_times_to_take_quiz, collection: 1..9 %>
+    <%= f.input :respond_after, collection: Quiz.respond_after_types %>
+    <%= f.input :default_theme, collection: Quiz.themes %>
+    <%= f.association :questions, collection: Question.all %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

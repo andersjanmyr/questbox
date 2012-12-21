@@ -1,5 +1,15 @@
-<%= link_to "Questbox", root_path, :class => 'brand' %>
+<div class='brand'>
+  <%= link_to image_tag('question-box-small.png') %>
+</div>
 <ul class="nav">
+  <%= content_tag('li', :class => current_page?(questions_path) ? "active" : "") do %>
+    <%= link_to_unless_current 'Questions', questions_path %>
+  <%- end %>
+  <%= content_tag('li', :class => current_page?(quizzes_path) ? "active" : "") do %>
+      <%= link_to_unless_current 'Quizzes', quizzes_path %>
+  <%- end %>
+</ul>  
+<ul class="user-panel">
   <% if user_signed_in? %>
     <li>
     <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>        

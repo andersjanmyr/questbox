@@ -65,7 +65,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
 
     respond_to do |format|
-      if @question.update_attributes(params[:question])
+      if @question.update_attributes(params[:question].except(:extra))
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
         format.json { head :no_content }
       else

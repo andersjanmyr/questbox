@@ -4,9 +4,6 @@
   <tr>
     <th>Text</th>
     <th>Answers</th>
-    <th>Extra</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
@@ -14,9 +11,11 @@
   <tr>
     <td><%= question.text %></td>
     <td><%= question.answers %></td>
-    <td><%= link_to 'Show', question_path(question) %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Destroy', question_path(question), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+      <%= link_to 'Show', question_path(question) %> |
+      <%= link_to 'Edit', edit_question_path(question) %> |
+      <%= link_to 'Destroy', question_path(question), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
   </tr>
 <% end %>
 </table>

@@ -85,22 +85,21 @@ h1 {
 
 .container {
   @include outer-container;
-  
+}
 
-  #main {
-    @include span-columns(10);
-    background-color: white;
-    border-radius: 12px;
-    padding: 12px;
+#main {
+  @include span-columns(10);
+  background-color: white;
+  border-radius: 12px;
+  padding: 12px;
+  a {
+    color: darkgreen;
+    text-decoration: none;
   }
-}
-a {
-  color: blue;
-  text-decoration: none;
-}
 
-a:visited {
-  color: blue;
+  a:visited {
+    color: darkgreen;
+  }
 }
 
 table {

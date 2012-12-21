@@ -10,7 +10,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'bourbon'
+gem 'neat'
 
 gem 'unicorn'
 gem 'mongoid'

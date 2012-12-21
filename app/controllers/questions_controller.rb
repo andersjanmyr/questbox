@@ -46,8 +46,6 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     question = params[:question].except(:extra)
-    question[:alternatives] = question[:alternatives].split(/, /) if question[:alternatives]
-    question[:answers] = question[:answers].split(/, /) if question[:answers]
     @question = getClass.new(question)
 
     respond_to do |format|

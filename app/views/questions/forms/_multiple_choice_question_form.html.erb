@@ -4,8 +4,13 @@
   <div class="form-inputs">
     <%= f.input :class, as: :hidden %>
     <%= f.input :text %>
-    <%= f.input :alternatives %>
-    <%= f.input :answers %>
+    <% 5.times do |i| alts = @question.alternatives || [], ans = @question.answers || [] %>
+      <div class='input optional'>
+        <label class="string optional control-label" for="question_alternatives">Alternative</label>
+        <%= check_box_tag  'question[answers][]', ans.size >= i ? ans[i] : '' %>
+        <%= text_field_tag 'question[alternatives][]', alts.size >= i ? alts[i] : '' %>
+      </div>
+    <% end %>
     <%= f.input :extra %>
   </div>
 

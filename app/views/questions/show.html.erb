@@ -5,6 +5,13 @@
   <%= @question.text %>
 </p>
 
+<% if @question.alternatives %>
+<p>
+  <b>Alternatives:</b>
+  <%= @question.alternatives %>
+  </p>
+<% end %>
+
 <p>
   <b>Answers:</b>
   <%= @question.answers %>

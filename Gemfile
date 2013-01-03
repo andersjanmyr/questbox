@@ -7,6 +7,7 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
+  gem 'teabag'
 end
 
 gem 'jquery-rails'

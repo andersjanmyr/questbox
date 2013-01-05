@@ -4,8 +4,8 @@
 //
 // Teabag includes some useful javascripts for you, and you can include them here.
 // require support/jasmine-jquery
-// require support/sinon
-// require support/expect
+//= require support/sinon
+//= require support/expect
 //
 // You're also able to include any of the files in support as well.
 // require support/your-support-file

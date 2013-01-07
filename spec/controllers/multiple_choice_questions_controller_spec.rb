@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe MultipleChoiceQuestionsController do
 
+  def errors
+    es = ActiveModel::Errors.new(self)
+    es.add(:text, 'an error')
+    es
+  end
+
   def valid_attributes
     { "text" => "MyString" }
   end
@@ -64,6 +70,7 @@ describe MultipleChoiceQuestionsController do
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         MultipleChoiceQuestion.any_instance.stub(:save).and_return(false)
+        MultipleChoiceQuestion.any_instance.stub(:errors).and_return(errors)
         post :create, {:multiple_choice_question => { "text" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
@@ -71,9 +78,9 @@ describe MultipleChoiceQuestionsController do
   end
 
   describe "PUT update" do
+    let(:question) {MultipleChoiceQuestion.create! valid_attributes}
     describe "with valid params" do
       it "updates the requested question" do
-        question = MultipleChoiceQuestion.create! valid_attributes
         # Assuming there are no other questions in the database, this
         # specifies that the Question created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -83,13 +90,11 @@ describe MultipleChoiceQuestionsController do
       end
 
       it "assigns the requested question as @question" do
-        question = MultipleChoiceQuestion.create! valid_attributes
         put :update, {:id => question.to_param, :multiple_choice_question => valid_attributes}, valid_session
         assigns(:multiple_choice_question).should eq(question)
       end
 
       it "redirects to the question" do
-        question = MultipleChoiceQuestion.create! valid_attributes
         put :update, {:id => question.to_param, :multiple_choice_question => valid_attributes}, valid_session
         response.should redirect_to(question)
       end
@@ -97,7 +102,6 @@ describe MultipleChoiceQuestionsController do
 
     describe "with invalid params" do
       it "assigns the question as @question" do
-        question = MultipleChoiceQuestion.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         MultipleChoiceQuestion.any_instance.stub(:save).and_return(false)
         put :update, {:id => question.to_param, :multiple_choice_question => { "text" => "invalid value" }}, valid_session
@@ -105,9 +109,9 @@ describe MultipleChoiceQuestionsController do
       end
 
       it "re-renders the 'edit' template" do
-        question = MultipleChoiceQuestion.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         MultipleChoiceQuestion.any_instance.stub(:save).and_return(false)
+        MultipleChoiceQuestion.any_instance.stub(:errors).and_return(errors)
         put :update, {:id => question.to_param, :multiple_choice_question => { "text" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end

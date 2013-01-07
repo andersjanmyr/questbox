@@ -43,8 +43,8 @@ describe MultipleChoiceQuestionsController do
 
       it "assigns a newly created question as @question" do
         post :create, {:multiple_choice_question => valid_attributes}, valid_session
-        assigns(:question).should be_a(MultipleChoiceQuestion)
-        assigns(:question).should be_persisted
+        assigns(:multiple_choice_question).should be_a(MultipleChoiceQuestion)
+        assigns(:multiple_choice_question).should be_persisted
       end
 
       it "redirects to the created question" do
@@ -58,7 +58,7 @@ describe MultipleChoiceQuestionsController do
         # Trigger the behavior that occurs when invalid params are submitted
         MultipleChoiceQuestion.any_instance.stub(:save).and_return(false)
         post :create, {:multiple_choice_question => { "text" => "invalid value" }}, valid_session
-        assigns(:question).should be_a_new(MultipleChoiceQuestion)
+        assigns(:multiple_choice_question).should be_a_new(MultipleChoiceQuestion)
       end
 
       it "re-renders the 'new' template" do
@@ -83,9 +83,9 @@ describe MultipleChoiceQuestionsController do
       end
 
       it "assigns the requested question as @question" do
-        question = Question.create! valid_attributes
+        question = MultipleChoiceQuestion.create! valid_attributes
         put :update, {:id => question.to_param, :multiple_choice_question => valid_attributes}, valid_session
-        assigns(:question).should eq(question)
+        assigns(:multiple_choice_question).should eq(question)
       end
 
       it "redirects to the question" do
@@ -101,7 +101,7 @@ describe MultipleChoiceQuestionsController do
         # Trigger the behavior that occurs when invalid params are submitted
         MultipleChoiceQuestion.any_instance.stub(:save).and_return(false)
         put :update, {:id => question.to_param, :multiple_choice_question => { "text" => "invalid value" }}, valid_session
-        assigns(:question).should eq(question)
+        assigns(:multiple_choice_question).should eq(question)
       end
 
       it "re-renders the 'edit' template" do
@@ -109,7 +109,6 @@ describe MultipleChoiceQuestionsController do
         # Trigger the behavior that occurs when invalid params are submitted
         MultipleChoiceQuestion.any_instance.stub(:save).and_return(false)
         put :update, {:id => question.to_param, :multiple_choice_question => { "text" => "invalid value" }}, valid_session
-        pp response
         response.should render_template("edit")
       end
     end

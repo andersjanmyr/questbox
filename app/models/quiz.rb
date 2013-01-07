@@ -10,7 +10,7 @@ class Quiz
 
   def self.respond_after_types
     [:after_each_question, :after_quiz]
-  end 
+  end
 
   def self.themes
     %w(Blue Yellow Red)

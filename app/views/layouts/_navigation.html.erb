@@ -8,15 +8,15 @@
   <%= content_tag('li', :class => current_page?(quizzes_path) ? "active" : "") do %>
       <%= link_to_unless_current 'Quizzes', quizzes_path %>
   <%- end %>
-</ul>  
+</ul>
 <ul class="user-panel">
   <% if user_signed_in? %>
     <li>
-    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>        
+    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
     </li>
   <% else %>
     <li>
-    <%= link_to 'Login', new_user_session_path %>  
+    <%= link_to 'Login', new_user_session_path %>
     </li>
   <% end %>
   <% if user_signed_in? %>

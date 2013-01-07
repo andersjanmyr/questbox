@@ -35,7 +35,7 @@ class QuestionsController < ApplicationController
   def getClass
     (params[:class] || params[:question][:class] || 'Question').constantize
   end
-    
+
 
   # GET /questions/1/edit
   def edit

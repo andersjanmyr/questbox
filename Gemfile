@@ -21,6 +21,8 @@ gem 'devise'
 gem 'cancan'
 gem 'rolify'
 gem 'simple_form'
+gem 'responders'
+gem 'inherited_resources'
 
 group :development, :test do
   gem 'rspec-rails'

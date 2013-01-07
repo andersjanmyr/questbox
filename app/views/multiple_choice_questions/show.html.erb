@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Text:</b>
+  <%= @multiple_choice_question.text %>
+</p>
+
+<% if @multiple_choice_question.alternatives %>
+<p>
+  <b>Alternatives:</b>
+  <%= @multiple_choice_question.alternatives %>
+  </p>
+<% end %>
+
+<p>
+  <b>Answers:</b>
+  <%= @multiple_choice_question.answers %>
+</p>
+
+<p>
+  <b>Extra:</b>
+  <%= @multiple_choice_question.extra %>
+</p>
+
+
+<%= link_to 'Edit', edit_multiple_choice_question_path(@multiple_choice_question) %> |
+<%= link_to 'Back', questions_path %>

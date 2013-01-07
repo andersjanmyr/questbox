@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Text:</b>
+  <%= @fill_in_the_blanks_question.text %>
+</p>
+
+<% if @fill_in_the_blanks_question.alternatives %>
+<p>
+  <b>Alternatives:</b>
+  <%= @fill_in_the_blanks_question.alternatives %>
+  </p>
+<% end %>
+
+<p>
+  <b>Answers:</b>
+  <%= @fill_in_the_blanks_question.answers %>
+</p>
+
+<p>
+  <b>Extra:</b>
+  <%= @fill_in_the_blanks_question.extra %>
+</p>
+
+
+<%= link_to 'Edit', edit_fill_in_the_blanks_question_path(@fill_in_the_blanks_question) %> |
+<%= link_to 'Back', questions_path %>

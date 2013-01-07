@@ -33,6 +33,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'heroku'
   gem 'debugger'
+  gem 'rails_best_practices'
 end
 
 group :test do

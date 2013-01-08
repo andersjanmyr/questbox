@@ -7,6 +7,7 @@ class Question
   field :extra, type: Hash
   belongs_to :quiz
 
+  attr_accessible :text, :extra
   validates_presence_of :text
 
   def self.question_types

@@ -2,13 +2,12 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :class, as: :hidden %>
     <%= f.input :text %>
-    <% 5.times do |i| alts = @multiple_choice_question.alternatives || []; ans = @multiple_choice_question.answers || [] %>
+    <% 5.times do |i| alts = @multiple_choice_question.alternatives  %>
       <div class='input optional'>
         <label class="string optional control-label" for="question_alternatives">Alternative</label>
-        <%= check_box_tag  'question[answers][]', i, ans.size >= i ? ans[i] : ''  %>
-        <%= text_field_tag 'question[alternatives][]', alts.size >= i ? alts[i] : '' %>
+        <%= radio_button_tag  'multiple_choice_question[correct_alternative]', i, @multiple_choice_question.correct_alternative == i %>
+        <%= text_field_tag 'multiple_choice_question[alternatives][]', alts.size >= i ? alts[i] : '' %>
       </div>
     <% end %>
   </div>

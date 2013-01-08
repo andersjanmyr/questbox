@@ -1,2 +1,2 @@
-class FillInTheBlanksQuestionsController < InheritedResources::Base
+class MultipleChoiceQuestionsController < InheritedResources::Base
 end

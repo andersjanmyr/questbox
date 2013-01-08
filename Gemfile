@@ -23,6 +23,7 @@ gem 'rolify'
 gem 'simple_form'
 gem 'responders'
 gem 'inherited_resources'
+gem 'dynamic_form'
 
 group :development, :test do
   gem 'rspec-rails'

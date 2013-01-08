@@ -2,7 +2,7 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :text %>
+    <%= f.input :text, autofocus: true %>
     <% 9.times do |i| alts = @multiple_choice_question.alternatives  %>
       <div class='input optional'>
         <label class="string optional control-label" for="question_alternatives">Alternative</label>

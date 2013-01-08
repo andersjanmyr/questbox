@@ -10,7 +10,7 @@
 <% @questions.each do |question| %>
   <tr>
     <td><%= question.text %></td>
-    <td><%= question.answers %></td>
+    <td><%= question.question_type %></td>
     <td>
       <%= link_to 'Show', question %> |
       <%= link_to 'Edit', edit_polymorphic_url(question) %> |

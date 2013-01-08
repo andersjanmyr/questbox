@@ -4,12 +4,17 @@ class Question
   attr_accessor :question_type
 
   field :text, type: String
-  field :answers, type: Array
   field :extra, type: Hash
   belongs_to :quiz
 
+  validates_presence_of :text
+
   def self.question_types
     [MultipleChoiceQuestion, FillInTheBlanksQuestion]
+  end
+
+  def question_type
+    self.class
   end
 
   def to_s

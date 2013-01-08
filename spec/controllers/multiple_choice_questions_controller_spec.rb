@@ -3,7 +3,7 @@ require 'spec_helper'
 describe MultipleChoiceQuestionsController do
 
   def errors
-    es = ActiveModel::Errors.new(self)
+    es = ActiveModel::Errors.new(nil)
     es.add(:text, 'an error')
     es
   end
@@ -79,6 +79,7 @@ describe MultipleChoiceQuestionsController do
 
   describe "PUT update" do
     let(:question) {MultipleChoiceQuestion.create! valid_attributes}
+
     describe "with valid params" do
       it "updates the requested question" do
         # Assuming there are no other questions in the database, this
@@ -110,8 +111,8 @@ describe MultipleChoiceQuestionsController do
 
       it "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        MultipleChoiceQuestion.any_instance.stub(:save).and_return(false)
-        MultipleChoiceQuestion.any_instance.stub(:errors).and_return(errors)
+        MultipleChoiceQuestion.any_instance.stub(:update_attributes).and_return(false)
+        MultipleChoiceQuestion.any_instance.should_receive(:errors).at_least(:once).and_return(errors)
         put :update, {:id => question.to_param, :multiple_choice_question => { "text" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end

@@ -3,11 +3,11 @@
 
   <div class="form-inputs">
     <%= f.input :text %>
-    <% 5.times do |i| alts = @multiple_choice_question.alternatives  %>
+    <% 9.times do |i| alts = @multiple_choice_question.alternatives  %>
       <div class='input optional'>
         <label class="string optional control-label" for="question_alternatives">Alternative</label>
-        <%= radio_button_tag  'multiple_choice_question[correct_alternative]', i, @multiple_choice_question.correct_alternative == i %>
         <%= text_field_tag 'multiple_choice_question[alternatives][]', alts.size >= i ? alts[i] : '' %>
+        <%= radio_button_tag  'multiple_choice_question[correct_alternative]', i, @multiple_choice_question.correct_alternative == i %>
       </div>
     <% end %>
   </div>

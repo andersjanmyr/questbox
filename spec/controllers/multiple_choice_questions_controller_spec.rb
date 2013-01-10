@@ -9,7 +9,10 @@ describe MultipleChoiceQuestionsController do
   end
 
   def valid_attributes
-    { "text" => "MyString" }
+    { "text" => "MyString",
+      'alternatives' => %w(one two three),
+      'correct_alternative' => 1
+    }
   end
 
   def valid_session
